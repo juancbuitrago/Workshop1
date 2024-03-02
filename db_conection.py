@@ -1,32 +1,47 @@
+import json
+import os
 import psycopg2
+
 from psycopg2 import OperationalError
 
+def create_database(cursor, database_name):
+    cursor.execute(f"SELECT 1 FROM pg_database WHERE datname = '{database_name}'")
+    exists = cursor.fetchone()
+    if not exists:
+        cursor.execute(f"CREATE DATABASE {database_name};")
+        print(f"Database '{database_name}' created successfully in PostgreSQL!")
+    else:
+        print(f"Database '{database_name}' already exists in PostgreSQL!")
+
 def table_exists(cursor, table_name):
-    """
-    Verifica si la tabla ya existe en la base de datos.
-    """
     cursor.execute("SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = %s)", (table_name,))
-    return cursor.fetchone()[0]
+    exists = cursor.fetchone()[0]
+    if exists:
+        print(f"The table '{table_name}' already exists in the database")
+    else:
+        print(f"The table '{table_name}' has been created successfully!")
+        
+    return exists
+
+with open('config.json') as f:
+    config = json.load(f)
 
 try:
-    # Conexión a la base de datos PostgreSQL
-    connection = psycopg2.connect(
-        dbname="candidates",
-        user="postgres",
-        password="",
-        host="localhost",
-        port="5432",
-        client_encoding='utf-8'
-    )
+    connection = psycopg2.connect(**config["no_db"])
+    connection.autocommit = True  # Establecer autocommit a True
+    print("Successful connection to postgresql!")
 
-    # Creación de un cursor para ejecutar comandos SQL
+    cursor = connection.cursor()
+    create_database(cursor, 'candidates')
+
+    connection = psycopg2.connect(**config["with_db"])
+    print("Successful connection to the 'candidates' database!")
+
     cursor = connection.cursor()
 
     table_name = "candidates"
 
-    # Verificar si la tabla ya existe
     if not table_exists(cursor, table_name):
-        # Comando SQL para crear una tabla
         create_table_query =''' CREATE TABLE candidates (
             "First Name" VARCHAR(255),
             "Last Name" VARCHAR(255),
@@ -40,27 +55,35 @@ try:
             "Technical Interview Score" INTEGER
         );'''
 
-        # Ejecución del comando SQL
         cursor.execute(create_table_query)
         connection.commit()
-        print("Tabla creada exitosamente en PostgreSQL")
-    else:
-        print("La tabla ya existe en la base de datos")
 
-    # Cargar datos desde el archivo CSV
+
     with open('candidates.csv', 'r') as f:
-        next(f)  # Salta la primera fila (cabecera)
+        next(f)
         cursor.copy_from(f, 'candidates', sep=';', null='', columns=("First Name", "Last Name", "Email", "Application Date", "Country", "YOE", "Seniority", "Technology", "Code Challenge Score", "Technical Interview Score"))
-        connection.commit()  # Confirma la transacción
+        connection.commit()
+        
+        table_name = "candidates_hired"
+        
+        if not table_exists(cursor, table_name):
+            
 
-    print("Datos insertados exitosamente en la tabla")
+                create_new_table_query = '''CREATE TABLE candidates_hired AS
+                SELECT *,
+                    CASE WHEN "Code Challenge Score" >= 7 AND "Technical Interview Score" >= 7 THEN TRUE ELSE FALSE END AS hired
+                FROM candidates;'''
+
+                cursor.execute(create_new_table_query)
+                connection.commit()
+
+    print("Data successfully inserted in the table")
 
 except OperationalError as e:
-    print(f"Ocurrió un error: {e}")
+    print(f"An error ocurred: {e}")
 
 finally:
-    # Cierre de la conexión y el cursor
     if connection:
         cursor.close()
         connection.close()
-        print("Conexión cerrada")
+        print("Closed connection")
