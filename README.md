@@ -114,4 +114,4 @@ _Previous command will install the following necessary libraries for the worksho
 
 ### Also, threre is the **[Published Dashboard](https://app.powerbi.com/links/TVzsQN2Hxq?ctid=693cbea0-4ef9-4254-8977-76e05cb5f556&pbi_source=linkShare)** for a better interactive experience with the dashboard and the data.
 
-# _**[Clone me](https://github.com/juancbuitrago/Workshop1.git) and see how powerful the data can be!_
+# _[Clone me](https://github.com/juancbuitrago/Workshop1.git) and see how powerful the data can be!_
