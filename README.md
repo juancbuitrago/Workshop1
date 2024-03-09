@@ -1,4 +1,23 @@
 # ETL Workshop 1 #
+## Structure ##
+ .
+        ├── .gitignore
+        ├── README.md
+        ├── data
+        │   ├── candidates.csv
+        │   └── config.json
+        ├── docs
+        │   ├── dashboard.pdf
+        │   └── documentation.pdf
+        ├── notebooks
+        │   ├── EDA.ipynb
+        │   └── Transformation.ipynb
+        ├── src
+            ├── config.py
+            ├── main.py
+            └── requirements.txt
+
+
 ## Overview ##
 _This workshop demonstrates how to create and manage candidate data using PostgreSQL and Python. It covers connecting to a PostgreSQL database, creating tables, importing data from CSV files, and performing basic SQL operations._
 
