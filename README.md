@@ -67,7 +67,7 @@ _Previous command will install the following necessary libraries for the worksho
 - sys
 
 ```
-## Data Transformation <a name="data-treatment"></a> ##
+## Data Transformation <a name="data-transformation"></a> ##
 
  _This process was carried out in **[First Notebook](https://github.com/juancbuitrago/Workshop1/blob/main/notebooks/Transformation.ipynb)** where the following procedures are being carried out:_
 
