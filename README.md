@@ -1,5 +1,7 @@
 # ETL Workshop 1 #
 ## Structure ##
+<div style="background-color: #000000;font-size: 14px ;color: #FFFFFF; padding: 10px; border: 1px solid #ccc">
+    <pre>
  .
         ├── .gitignore
         ├── README.md
@@ -16,7 +18,8 @@
             ├── config.py
             ├── main.py
             └── requirements.txt
-
+    </pre>
+</div>
 
 ## Overview ##
 _This workshop demonstrates how to create and manage candidate data using PostgreSQL and Python. It covers connecting to a PostgreSQL database, creating tables, importing data from CSV files, and performing basic SQL operations._
