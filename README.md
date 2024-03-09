@@ -110,8 +110,8 @@ _Previous command will install the following necessary libraries for the worksho
 
 ## Analysis & Visualization <a name="analysis-visualizations"></a> ###
 
-### These visualizations can be seen in the **[Dashboard Summary](https://github.com/juancbuitrago/Workshop1/blob/main/docs/dashboard.pdf)**.
+### These visualizations can be seen in the **[Dashboard of candidates hired](https://github.com/juancbuitrago/Workshop1/blob/main/docs/dashboard.pdf)**.
 
 ### Also, threre is the **[Published Dashboard](https://app.powerbi.com/links/TVzsQN2Hxq?ctid=693cbea0-4ef9-4254-8977-76e05cb5f556&pbi_source=linkShare)** for a better interactive experience with the dashboard and the data.
 
-
+# _**[Clone me](https://github.com/juancbuitrago/Workshop1.git) and see how powerful the data can be!_
