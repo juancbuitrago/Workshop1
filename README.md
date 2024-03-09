@@ -2,7 +2,7 @@
 ## Structure ##
 <div style="background-color: #000000;font-size: 14px ;color: #FFFFFF; padding: 10px; border: 1px solid #ccc">
     <pre>
- .
+        .
         ├── .gitignore
         ├── README.md
         ├── data
@@ -14,7 +14,7 @@
         ├── notebooks
         │   ├── EDA.ipynb
         │   └── Transformation.ipynb
-        ├── src
+        └── src
             ├── config.py
             ├── main.py
             └── requirements.txt
@@ -71,7 +71,7 @@ ensure you have the following programs installed with which the entire project p
    - **[PowerBI](https://powerbi.microsoft.com/es-es/downloads/)**
    - **[VS Code](https://code.visualstudio.com/download)** or **[Jupyter](https://jupyter.org/install)**
 
-_Using the **[requirements.txt](https://github.com/RJuanJo/etl-project/blob/main/config/requirements.txt)**
+_Using the **[requirements.txt](https://github.com/juancbuitrago/Workshop1/blob/main/src/requirements.txt)**
 run the following command in the Terminal_
 
 ```python
@@ -80,12 +80,12 @@ pip install -r src/requirements.txt
 _Previous command will install the following necessary libraries for the workshop_
 
 ```python
-- psycopg2
 - matplotlib
 - pandas
 - pip
-- sqlalchemy
+- psycopg2
 - seaborn
+- sqlalchemy
 - sys
 
 ```
