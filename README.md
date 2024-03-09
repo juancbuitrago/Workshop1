@@ -86,7 +86,6 @@ _Previous command will install the following necessary libraries for the worksho
 - psycopg2
 - seaborn
 - sqlalchemy
-- sys
 
 ```
 ## Data Transformation <a name="data-transformation"></a> ##

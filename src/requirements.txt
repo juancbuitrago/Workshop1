@@ -4,4 +4,3 @@ pandas
 pip
 sqlalchemy
 seaborn
-sys
