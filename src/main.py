@@ -1,10 +1,10 @@
 import psycopg2
 import pandas as pd
 from psycopg2 import OperationalError
-from config import load_config, connect_to_database, create_database, table_exists, categorize_technology
+from config import load_config, connect_to_database, create_database, table_exists
 
 def main():
-    config = load_config('config.json')
+    config = load_config('../data/config.json')
 
     try:
         connection = connect_to_database(config["no_db"])
@@ -36,9 +36,9 @@ def main():
             cursor.execute(create_table_query)
             connection.commit()
 
-        data = pd.read_csv('candidates.csv', sep=';')
+        data = pd.read_csv('../data/candidates.csv', sep=';')
 
-        with open('candidates.csv', 'r') as f:
+        with open('../data/candidates.csv', 'r') as f:
             next(f)
             cursor.copy_from(f, 'candidates', sep=';', null='', columns=("First Name", "Last Name", "Email", "Application Date", "Country", "YOE", "Seniority", "Technology", "Code Challenge Score", "Technical Interview Score"))
             connection.commit()
